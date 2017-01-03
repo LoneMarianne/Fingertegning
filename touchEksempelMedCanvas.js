@@ -1,0 +1,34 @@
+var canvas;
+var ctx;
+var xgl;
+var ygl;
+  
+function init() {
+	//touchzone på mycanvas
+    var touchzone = document.getElementById("mycanvas");
+	//tilføj eventlistne
+	touchzone.addEventListener("touchmove", opdaterCanvas, false);
+	touchzone.addEventListener("touchend", end, false);
+    ctx = touchzone.getContext("2d");
+	mycanvas.width = mycanvas.width; //resetter canvas
+	ctx.fillStyle="yellow";
+	ctx.fillRect(0, 0, mycanvas.width, mycanvas.height); 
+}
+	  
+
+
+function opdaterCanvas(){
+	ctx.moveTo(xgl,ygl);
+	var x = event.touches[0].pageX;
+	var y = event.touches[0].pageY;
+	ctx.lineTo(x,y);
+	xgl =x;
+	ygl =y;
+	ctx.stroke();
+}	
+ 
+function end(e) {
+     e.preventDefault();
+        // Terminate touch path
+}
+   
